@@ -1,0 +1,12 @@
+[package]
+name = "MacTypes-sys"
+version = "0.1.0"
+authors = ["George Burton <burtonageo@gmail.com>"]
+description = "Bindings for MacTypes.h"
+license = "MIT"
+homepage = "https://github.com/burtonageo/MacTypes-sys"
+repository = "https://github.com/burtonageo/MacTypes-sys"
+readme = "Readme.md"
+keywords = ["types", "osx", "system", "bindings"]
+
+[dependencies]
