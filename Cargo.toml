@@ -1,6 +1,6 @@
 [package]
 name = "MacTypes-sys"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["George Burton <burtonageo@gmail.com>"]
 description = "Bindings for MacTypes.h"
 license = "MIT"
@@ -10,3 +10,7 @@ readme = "Readme.md"
 keywords = ["types", "osx", "system", "bindings"]
 
 [dependencies]
+libc = "0.2"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winapi = "0.2"
