@@ -1,6 +1,9 @@
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 #![no_std]
 
+//! The `MacTypes-sys` library provides bindings to the MacTypes.h header on OSX.
+//! This library defines base types used in both Carbon and legacy Cocoa APIs.
+
 extern crate libc;
 #[cfg(target_os = "windows")]
 extern crate winapi;
