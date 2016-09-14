@@ -39,7 +39,7 @@ pub struct UnsignedWide {
     pub lo: UInt32,
 }
 
-#[cfg(not(target_endian = "big"))]
+#[cfg(target_endian = "little")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct wide {
@@ -47,7 +47,7 @@ pub struct wide {
     pub hi: SInt32,
 }
 
-#[cfg(not(target_endian = "big"))]
+#[cfg(target_endian = "little")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct UnsignedWide {
@@ -138,10 +138,10 @@ pub type URefCon = *mut c_void;
 #[cfg(target_pointer_width = "64")]
 pub type SRefCon = *mut c_void;
 
-#[cfg(not(target_pointer_width = "64"))]
+#[cfg(target_pointer_width = "32")]
 pub type URefCon = UInt32;
 
-#[cfg(not(target_pointer_width = "64"))]
+#[cfg(target_pointer_width = "64")]
 pub type SRefCon = SInt32;
 
 pub const kNoErr: OSErr = 0;
@@ -265,7 +265,7 @@ pub struct NumVersion {
     pub nonRelRev: UInt8,
 }
 
-#[cfg(not(target_endian = "big"))]
+#[cfg(target_endian = "big")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct NumVersion {
