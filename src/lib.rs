@@ -16,12 +16,12 @@ use core::ptr;
 use core::str;
 use libc::*;
 
-pub type UInt8 = c_uchar;
-pub type SInt8 = c_char;
-pub type UInt16 = c_ushort;
-pub type SInt16 = c_short;
-pub type UInt32 = c_uint;
-pub type SInt32 = c_int;
+pub type UInt8 = u8;
+pub type SInt8 = i8;
+pub type UInt16 = u16;
+pub type SInt16 = i16;
+pub type UInt32 = u32;
+pub type SInt32 = i32;
 
 #[cfg(target_endian = "big")]
 #[repr(C)]
@@ -55,18 +55,8 @@ pub struct UnsignedWide {
     pub hi: UInt32,
 }
 
-// _LP64_
-#[cfg(all(target_os = "windows", target_pointer_width = "64"))]
-pub type SInt64 = winapi::__int64;
-
-#[cfg(all(target_os = "windows", target_pointer_width = "64"))]
-pub type UInt64 = winapi::__int64;
-
-#[cfg(not(all(target_os = "windows", target_pointer_width = "64")))]
-pub type SInt64 = c_ulonglong;
-
-#[cfg(not(all(target_os = "windows", target_pointer_width = "64")))]
-pub type UInt64 = c_longlong;
+pub type SInt64 = i64;
+pub type UInt64 = u64;
 
 pub type Fixed = SInt32;
 pub type FixedPtr = *mut Fixed;
@@ -141,7 +131,7 @@ pub type SRefCon = *mut c_void;
 #[cfg(target_pointer_width = "32")]
 pub type URefCon = UInt32;
 
-#[cfg(target_pointer_width = "64")]
+#[cfg(target_pointer_width = "32")]
 pub type SRefCon = SInt32;
 
 pub const kNoErr: OSErr = 0;
@@ -265,7 +255,7 @@ pub struct NumVersion {
     pub nonRelRev: UInt8,
 }
 
-#[cfg(target_endian = "big")]
+#[cfg(target_endian = "little")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct NumVersion {
