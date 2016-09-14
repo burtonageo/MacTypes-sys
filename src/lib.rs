@@ -5,8 +5,6 @@
 //! This library defines base types used in both Carbon and legacy Cocoa APIs.
 
 extern crate libc;
-#[cfg(target_os = "windows")]
-extern crate winapi;
 
 use core::cmp::{Eq, PartialEq};
 use core::hash::{Hash, Hasher};
