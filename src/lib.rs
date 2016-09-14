@@ -8,10 +8,7 @@ extern crate libc;
 
 use core::cmp::{Eq, PartialEq};
 use core::hash::{Hash, Hasher};
-use core::fmt;
-use core::mem;
-use core::ptr;
-use core::str;
+use core::{fmt, mem, ptr, str};
 use libc::*;
 
 pub type UInt8 = u8;
