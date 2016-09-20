@@ -260,10 +260,10 @@ pub struct NumVersion {
     pub majorRev: UInt8,
 }
 
-pub const developStage: UInt32 = 0x20;
-pub const alphaStage: UInt32 = 0x40;
-pub const betaStage: UInt32 = 0x60;
-pub const finalStage: UInt32 = 0x80;
+pub const developStage: UInt8 = 0x20;
+pub const alphaStage: UInt8 = 0x40;
+pub const betaStage: UInt8 = 0x60;
+pub const finalStage: UInt8 = 0x80;
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]

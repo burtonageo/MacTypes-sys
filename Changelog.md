@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Made kVariableLengthArray a variable of type ItemCount, and kUnknownType
   an OSType.
+- Shortened the various `developStage` variables to `UInt8`, from `UInt32`.
 
 ## [1.0.3] - 2016-09-20
 ### Changed
