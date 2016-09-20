@@ -19,16 +19,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Remove the WinApi dependency.
 - Use rust-native fixed sized int types instead of libc's stdint types.
-- Bugfix: Mark Float80 and Float96 as #[repr(C)]
 
 ### Fixed
-- Fix Markdown links to tag comparison URL with footnote-style links.
+
+- Bugfix: Mark Float80 and Float96 as #[repr(C)]
 
 ## [1.0.1] - 2016-09-08
 ### Added
 - Added crate-level documentation comment.
 
-### Changed
+### Fixed
 - Fixed typos in Readme.md
 
 ## [1.0.0] - 2016-09-06
