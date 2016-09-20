@@ -10,4 +10,4 @@ readme = "Readme.md"
 keywords = ["types", "osx", "system", "bindings"]
 
 [dependencies]
-libc = "0.2"
+libc = { version = "0.2", default-features = false }
