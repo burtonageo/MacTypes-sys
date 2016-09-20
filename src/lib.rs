@@ -62,8 +62,8 @@ pub type UnsignedFixedPtr = *mut UnsignedFixed;
 pub type ShortFixed = SInt16;
 pub type ShortFixedPtr = *mut ShortFixed;
 
-pub type Float32 = c_float;
-pub type Float64 = c_double;
+pub type Float32 = f32;
+pub type Float64 = f64;
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
