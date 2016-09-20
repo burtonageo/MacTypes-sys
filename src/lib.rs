@@ -65,15 +65,15 @@ pub type ShortFixedPtr = *mut ShortFixed;
 pub type Float32 = c_float;
 pub type Float64 = c_double;
 
-#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 #[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct Float80 {
     pub exp: SInt16,
     pub man: [UInt16; 4],
 }
 
-#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 #[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct Float96 {
     pub exp: [SInt16; 2],
     pub man: [UInt16; 4],
