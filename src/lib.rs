@@ -132,8 +132,8 @@ pub type SRefCon = SInt32;
 pub const kNoErr: OSErr = 0;
 pub const kNilOptions: OptionBits = 0;
 pub const kInvalidId: u32 = 0;
-pub const kVariableLengthArray: u32 = 1;
-pub const kUnknownType: u32 = 0x3F3F3F3F;
+pub const kVariableLengthArray: ItemCount = 1;
+pub const kUnknownType: OSType = 0x3F3F3F3F;
 
 pub type UnicodeScalarValue = UInt32;
 pub type UTF32Char = UInt32;
