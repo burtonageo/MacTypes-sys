@@ -162,8 +162,8 @@ pub type ConstStr27Param = *const c_uchar;
 pub type ConstStr15Param = *const c_uchar;
 pub type ConstStrFileNameParam = *const ConstStr63Param;
 
-#[inline]
-pub unsafe extern "C" fn StrLength(string: ConstStr255Param) -> c_uchar {
+#[inline(always)]
+pub unsafe fn StrLength(string: ConstStr255Param) -> c_uchar {
     *string
 }
 

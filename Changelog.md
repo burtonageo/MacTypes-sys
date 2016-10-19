@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Changed
+- Made `StrLength` always inline, and not have `extern "C"` linkage because
+  it is used as an internal/inline interface (and is declared as a macro when
+  compiled as `C` in the header.
+
 ## [1.0.4] - 2016-10-19
 ### Changed
 - Made kVariableLengthArray a variable of type ItemCount, and kUnknownType
