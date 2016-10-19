@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   an OSType.
 - Shortened the various `developStage` variables to `UInt8`, from `UInt32`.
 
+### Added
+- Added documentation link to Cargo.toml and Readme.md.
+
 ## [1.0.3] - 2016-09-20
 ### Changed
 - Do not use any features in the libc crate.

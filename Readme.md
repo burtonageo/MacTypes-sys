@@ -20,6 +20,8 @@ Then, you can import the `MacTypes-sys` in your crate root, and use the function
 extern crate MacTypes_sys;
 ```
 
+Full documentation can be found on [docs.rs](https://docs.rs/MacTypes-sys).
+
 ## Contributors:
 
 - [George Burton](https://github.com/burtonageo)

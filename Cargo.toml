@@ -6,6 +6,7 @@ description = "Bindings for MacTypes.h"
 license = "MIT"
 homepage = "https://github.com/burtonageo/MacTypes-sys"
 repository = "https://github.com/burtonageo/MacTypes-sys"
+documentation = "https://docs.rs/MacTypes-sys"
 readme = "Readme.md"
 keywords = ["types", "osx", "system", "bindings"]
 

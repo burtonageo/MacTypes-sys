@@ -227,6 +227,7 @@ pub type TimeScale = SInt32;
 pub type CompTimeValue = wide;
 pub type TimeBase = *mut TimeBaseRecord;
 
+#[doc(hidden)]
 #[repr(C)]
 pub struct TimeBaseRecord {
     _priv: c_void
