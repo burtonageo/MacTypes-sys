@@ -1,6 +1,6 @@
 [package]
 name = "MacTypes-sys"
-version = "1.0.3"
+version = "1.0.4"
 authors = ["George Burton <burtonageo@gmail.com>"]
 description = "Bindings for MacTypes.h"
 license = "MIT"
