@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [1.1.0] - 2016-12-07
 ### Changed
 - Made `StrLength` always inline, and not have `extern "C"` linkage because
   it is used as an internal/inline interface (and is declared as a macro when
