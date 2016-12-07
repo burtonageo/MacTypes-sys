@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   it is used as an internal/inline interface (and is declared as a macro when
   compiled as `C` in the header.
 
+### Added
+- Added `Float32Point` struct.
+
 ## [1.0.4] - 2016-10-19
 ### Changed
 - Made kVariableLengthArray a variable of type ItemCount, and kUnknownType
