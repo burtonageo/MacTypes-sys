@@ -80,7 +80,7 @@ pub struct Float96 {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct Float32Point {
     pub x: Float32,
     pub y: Float32,
