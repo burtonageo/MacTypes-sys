@@ -79,6 +79,13 @@ pub struct Float96 {
     pub man: [UInt16; 4],
 }
 
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
+pub struct Float32Point {
+    pub x: Float32,
+    pub y: Float32,
+}
+
 pub type Ptr = *mut c_char;
 pub type Handle = *mut Ptr;
 pub type size = c_long;
