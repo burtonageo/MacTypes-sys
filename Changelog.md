@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [1.3.0] - 2017-05-11
 ### Fixed
 - Fixed a typo: renamed `StrField32` to `Str32Field`. Note that `StrField32` is still present,
   but it is marked as deprecated and will be removed in a future release.
