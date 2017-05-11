@@ -375,8 +375,8 @@ impl fmt::Debug for VersRec {
         fmt.debug_struct("VersRec")
             .field("numericVersion", &self.numericVersion)
             .field("countryCode", &self.countryCode)
-            .field("shortVersion", &str::from_utf8(&self.shortVersion).unwrap())
-            .field("reserved", &str::from_utf8(&self.reserved).unwrap())
+            .field("shortVersion", &try!(str::from_utf8(&self.shortVersion).map_err(|_| fmt::Error)))
+            .field("reserved", &try!(str::from_utf8(&self.reserved).map_err(|_| fmt::Error)))
             .finish()
     }
 }
