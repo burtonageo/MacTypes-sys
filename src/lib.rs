@@ -363,8 +363,14 @@ impl Clone for VersRec {
 impl Copy for VersRec { }
 
 impl Default for VersRec {
+    #[inline]
     fn default() -> Self {
-        unsafe { mem::zeroed() }
+        VersRec {
+            numericVersion: Default::default(),
+            countryCode: Default::default(),
+            shortVersion: [0; 256],
+            reserved: [0; 256],
+        }
     }
 }
 

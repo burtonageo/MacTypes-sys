@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   whether the crate has the `#![no_std]` attribute at the root.
 - The `Debug` impl for `VersRec` will now throw an error instead of panicking if
   `ShortVersion` and `Reserved` cannot be converted to `UTF8`.
+- Removed a use of unsafe in the `Default` impl of `VersRec`.
 
 ### Added
 - Added the `nightly` feature, which makes `NumVersionVariant` a proper union.
