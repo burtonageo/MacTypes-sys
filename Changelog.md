@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [1.2.0] - 2016-05-11
 ### Changed
 - Added a default `use_std` feature which is enabled by default. This configures
   whether the crate has the `#![no_std]` attribute at the root.
