@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   as the project now has a substantial amount of Apple documentation copied verbatim
   from the original header.
 
-## [1.2.0] - 2016-05-11
+## [1.2.0] - 2017-05-11
 ### Changed
 - Added a default `use_std` feature which is enabled by default. This configures
   whether the crate has the `#![no_std]` attribute at the root.
