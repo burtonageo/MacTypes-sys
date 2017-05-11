@@ -495,7 +495,7 @@ pub type TimeBase = *mut TimeBaseRecord;
 #[doc(hidden)]
 #[repr(C)]
 pub struct TimeBaseRecord {
-    _priv: c_void
+    _priv: c_void,
 }
 
 /// Package of TimeBase, duration, and scale.
@@ -562,9 +562,7 @@ pub union NumVersionVariant {
 impl Default for NumVersionVariant {
     #[inline]
     fn default() -> Self {
-        NumVersionVariant {
-            whole: 0,
-        }
+        NumVersionVariant { whole: 0 }
     }
 }
 
@@ -635,7 +633,7 @@ impl Clone for VersRec {
     }
 }
 
-impl Copy for VersRec { }
+impl Copy for VersRec {}
 
 impl Default for VersRec {
     #[inline]
@@ -649,15 +647,17 @@ impl Default for VersRec {
     }
 }
 
-impl Eq for VersRec { }
+impl Eq for VersRec {}
 
 impl fmt::Debug for VersRec {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         fmt.debug_struct("VersRec")
             .field("numericVersion", &self.numericVersion)
             .field("countryCode", &self.countryCode)
-            .field("shortVersion", &try!(str::from_utf8(&self.shortVersion).map_err(|_| fmt::Error)))
-            .field("reserved", &try!(str::from_utf8(&self.reserved).map_err(|_| fmt::Error)))
+            .field("shortVersion",
+                   &try!(str::from_utf8(&self.shortVersion).map_err(|_| fmt::Error)))
+            .field("reserved",
+                   &try!(str::from_utf8(&self.reserved).map_err(|_| fmt::Error)))
             .finish()
     }
 }
@@ -679,10 +679,13 @@ impl PartialEq for VersRec {
         }
 
         unsafe {
-            self.numericVersion == other.numericVersion &&
-            self.countryCode == other.countryCode &&
-            memcmp(ptr(&self.shortVersion), ptr(&other.shortVersion), mem::size_of::<Str255>()) == 0 &&
-            memcmp(ptr(&self.reserved), ptr(&other.reserved), mem::size_of::<Str255>()) == 0
+            self.numericVersion == other.numericVersion && self.countryCode == other.countryCode &&
+            memcmp(ptr(&self.shortVersion),
+                   ptr(&other.shortVersion),
+                   mem::size_of::<Str255>()) == 0 &&
+            memcmp(ptr(&self.reserved),
+                   ptr(&other.reserved),
+                   mem::size_of::<Str255>()) == 0
         }
     }
 }
