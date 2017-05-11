@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Changed
+- Added a default `use_std` feature which is enabled by default. This configures
+  whether the crate has the `#![no_std]` attribute at the root.
+
+### Added
+- Added the `nightly` feature, which makes `NumVersionVariant` a proper union.
+
 ## [1.1.0] - 2016-12-07
 ### Changed
 - Made `StrLength` always inline, and not have `extern "C"` linkage because

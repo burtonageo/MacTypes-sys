@@ -1,10 +1,14 @@
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
-#![no_std]
+#![cfg_attr(not(feature = "use_std"), no_std)]
+#![cfg_attr(feature = "nightly", feature(untagged_unions))]
 
 //! The `MacTypes-sys` library provides bindings to the MacTypes.h header on OSX.
 //! This library defines base types used in both Carbon and legacy Cocoa APIs.
 
 extern crate libc;
+
+#[cfg(feature = "use_std")]
+extern crate core;
 
 use core::cmp::{Eq, PartialEq};
 use core::hash::{Hash, Hasher};
@@ -273,6 +277,57 @@ pub const alphaStage: UInt8 = 0x40;
 pub const betaStage: UInt8 = 0x60;
 pub const finalStage: UInt8 = 0x80;
 
+#[cfg(feature = "nightly")]
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union NumVersionVariant {
+    pub parts: NumVersion,
+    pub whole: UInt32,
+}
+
+#[cfg(feature = "nightly")]
+impl Default for NumVersionVariant {
+    #[inline]
+    fn default() -> Self {
+        NumVersionVariant {
+            whole: 0,
+        }
+    }
+}
+
+#[cfg(feature = "nightly")]
+impl fmt::Debug for NumVersionVariant {
+    #[inline]
+    fn fmt(&self, fmtr: &mut fmt::Formatter) -> fmt::Result {
+        let parts = unsafe { self.parts };
+        fmtr.debug_struct("NumVersionVariant")
+            .field("parts", &parts)
+            .finish()
+    }
+}
+
+#[cfg(feature = "nightly")]
+impl PartialEq for NumVersionVariant {
+    #[inline]
+    fn eq(&self, other: &Self) -> bool {
+        unsafe { self.whole.eq(&other.whole) }
+    }
+}
+
+#[cfg(feature = "nightly")]
+impl Eq for NumVersionVariant {}
+
+#[cfg(feature = "nightly")]
+impl Hash for NumVersionVariant {
+    #[inline]
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        unsafe {
+            state.write_u32(self.whole);
+        }
+    }
+}
+
+#[cfg(not(feature = "nightly"))]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct NumVersionVariant {
