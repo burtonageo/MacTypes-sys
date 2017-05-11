@@ -407,7 +407,7 @@ pub type ConstStr15Param = *const c_uchar;
 /// For function parameters only - means string is const.
 pub type ConstStrFileNameParam = *const ConstStr63Param;
 
-/// Get the lenght of a pascal string.
+/// Get the length of a pascal string.
 #[inline(always)]
 pub unsafe fn StrLength(string: ConstStr255Param) -> c_uchar {
     *string
