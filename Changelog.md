@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Fixed
+- Fixed a typo: renamed `StrField32` to `Str32Field`. Note that `StrField32` is still present,
+  but it is marked as deprecated and will be removed in a future release.
+
+### Added
+- Added documentation copied from the original header file.
+
+### Changed
+- This project is now dual-licensed under the terms of the Apple Public Source License,
+  as the project now has a substantial amount of Apple documentation copied verbatim
+  from the original header.
+
 ## [1.2.0] - 2016-05-11
 ### Changed
 - Added a default `use_std` feature which is enabled by default. This configures
