@@ -549,7 +549,7 @@ pub const betaStage: UInt8 = 0x60;
 /// Version Release Stage Code.
 pub const finalStage: UInt8 = 0x80;
 
-/// `NumVersionVariant` is a wrapper so `NumVersion` can be accessed as a 32-bit value,
+/// `NumVersionVariant` is a wrapper so `NumVersion` can be accessed as a 32-bit value.
 #[cfg(feature = "nightly")]
 #[repr(C)]
 #[derive(Clone, Copy)]
