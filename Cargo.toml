@@ -16,4 +16,3 @@ libc = { version = "0.2", default-features = false }
 [features]
 default = ["use_std"]
 use_std = ["libc/use_std"]
-nightly = []
