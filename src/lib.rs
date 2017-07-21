@@ -40,7 +40,6 @@
 
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 #![cfg_attr(not(feature = "use_std"), no_std)]
-#![cfg_attr(feature = "nightly", feature(untagged_unions))]
 
 //! The `MacTypes-sys` library provides bindings to the MacTypes.h header on OSX.
 //! This library defines base types used in both Carbon and legacy Cocoa APIs.
@@ -202,7 +201,7 @@ pub type OSTypePtr = *mut OSType;
 /// A pointer to a `ResType`.
 pub type ResTypePtr = *mut ResType;
 
-/// Mac OS historic type, sizeof(Boolean)==1.
+/// Mac OS historic type, `sizeof(Boolean)==1`.
 pub type Boolean = c_uchar;
 
 /// Generic pointer to a function.
@@ -282,11 +281,11 @@ pub type URefCon = UInt32;
 #[cfg(target_pointer_width = "32")]
 pub type SRefCon = SInt32;
 
-/// OSErr: function performed properly - no error.
+/// `OSErr`: function performed properly - no error.
 pub const kNoErr: OSErr = 0;
-/// OptionBits: all flags false
+/// `OptionBits`: all flags false
 pub const kNilOptions: OptionBits = 0;
-/// KernelID: `NULL` is for pointers as `kInvalidID` is for ID's
+/// `KernelID`: `NULL` is for pointers as `kInvalidID` is for ID's
 pub const kInvalidId: u32 = 0;
 /// Array bounds: variable length array
 ///
@@ -297,54 +296,56 @@ pub const kInvalidId: u32 = 0;
 /// of any size.  Before ANSI C, we used zero as the bounds of variable length
 /// array, but zero length array are illegal in ANSI C.  Example usage:
 ///
+/// ```
 /// struct FooList
 /// {
 ///     short   listLength;
 ///     Foo     elements[kVariableLengthArray];
 /// };
+/// ```
 pub const kVariableLengthArray: ItemCount = 1;
-/// "????" QuickTime 3.0: default unknown ResType or OSType
+/// "????" QuickTime 3.0: default unknown `ResType` or `OSType`
 pub const kUnknownType: OSType = 0x3F3F3F3F;
 
 /// A complete Unicode character in UTF-32 format, with
-/// values from 0 through 0x10FFFF (excluding the surrogate
+/// values from `0` through `0x10FFFF` (excluding the surrogate
 /// range 0xD800-0xDFFF and certain disallowed values).
 pub type UnicodeScalarValue = UInt32;
 /// A complete Unicode character in UTF-32 format, with
-/// values from 0 through 0x10FFFF (excluding the surrogate
-/// range 0xD800-0xDFFF and certain disallowed values).
+/// values from `0` through `0x10FFFF` (excluding the surrogate
+/// range `0xD800`-`0xDFFF` and certain disallowed values).
 pub type UTF32Char = UInt32;
 /// A 16-bit Unicode code value in the default UTF-16 format.
 /// UnicodeScalarValues 0-0xFFFF are expressed in UTF-16
 /// format using a single `UTF16Char` with the same value.
-/// UnicodeScalarValues 0x10000-0x10FFFF are expressed in
+/// UnicodeScalarValues `0x10000`-`0x10FFFF` are expressed in
 /// UTF-16 format using a pair of `UTF16Char`s - one in the
-/// high surrogate range (0xD800-0xDBFF) followed by one in
-/// the low surrogate range (0xDC00-0xDFFF). All of the
+/// high surrogate range (`0xD800`-`0xDBFF`) followed by one in
+/// the low surrogate range (`0xDC00`-`0xDFFF`). All of the
 /// characters defined in Unicode versions through 3.0 are
-/// in the range 0-0xFFFF and can be expressed using a single
-/// UTF16Char, thus the term "Unicode character" generally
+/// in the range `0`-`0xFFFF` and can be expressed using a single
+/// `UTF16Char`, thus the term "Unicode character" generally
 /// refers to a `UniChar` = `UTF16Char`.
 pub type UniChar = UInt16;
 /// A 16-bit Unicode code value in the default UTF-16 format.
-/// UnicodeScalarValues 0-0xFFFF are expressed in UTF-16
+/// UnicodeScalarValues `0`-`0xFFFF` are expressed in UTF-16
 /// format using a single `UTF16Char` with the same value.
-/// UnicodeScalarValues 0x10000-0x10FFFF are expressed in
+/// UnicodeScalarValues `0x10000`-`0x10FFFF` are expressed in
 /// UTF-16 format using a pair of `UTF16Char`s - one in the
-/// high surrogate range (0xD800-0xDBFF) followed by one in
-/// the low surrogate range (0xDC00-0xDFFF). All of the
+/// high surrogate range (`0xD800`-`0xDBFF`) followed by one in
+/// the low surrogate range (`0xDC00`-`0xDFFF`). All of the
 /// characters defined in Unicode versions through 3.0 are
-/// in the range 0-0xFFFF and can be expressed using a single
-/// UTF16Char, thus the term "Unicode character" generally
+/// in the range `0`-`0xFFFF` and can be expressed using a single
+/// `UTF16Char`, thus the term "Unicode character" generally
 /// refers to a `UniChar` = `UTF16Char`.
 pub type UTF16Char = UInt16;
 /// An 8-bit code value in UTF-8 format. `UnicodeScalarValue`s
-/// 0-0x7F are expressed in UTF-8 format using one `UTF8Char`
-/// with the same value. `UnicodeScalarValue`s above 0x7F are
+/// `0`-`0x7F` are expressed in UTF-8 format using one `UTF8Char`
+/// with the same value. `UnicodeScalarValue`s above `0x7F` are
 /// expressed in UTF-8 format using 2-4 `UTF8Char`s, all with
-/// values in the range 0x80-0xF4 (`UnicodeScalarValue`s
-/// 0x100-0xFFFF use two or three `UTF8Char`s,
-/// `UnicodeScalarValue`s 0x10000-0x10FFFF use four `UTF8Chars`).
+/// values in the range `0x80`-`0xF4` (`UnicodeScalarValue`s
+/// `0x100`-`0xFFFF` use two or three `UTF8Char`s,
+/// `UnicodeScalarValue`s `0x10000`-`0x10FFFF` use four `UTF8Chars`).
 pub type UTF8Char = UInt8;
 /// A pointer to an array of `UniChar`s.
 pub type UniCharPtr = *mut UniChar;
@@ -370,13 +371,6 @@ pub type Str15 = [c_uchar; 16];
 /// been created.  It should only be used to hold 32 chars, but
 /// it is 34 bytes long so that there are no alignment problems.
 pub type Str32Field = [c_uchar; 34];
-
-/// This type is just an alias for `Str32Field`. It is only included
-/// so that `MacTypes-sys 1.3.0` is not a breaking change. It will be
-/// removed in version 2.0.0
-#[deprecated(since = "0.1.3",
-             note = "Please use Str32Field instead - this type is spelled incorrectly")]
-pub type StrField32 = Str32Field;
 
 /// QuickTime 3.0:
 ///
@@ -550,15 +544,13 @@ pub const betaStage: UInt8 = 0x60;
 pub const finalStage: UInt8 = 0x80;
 
 /// `NumVersionVariant` is a wrapper so `NumVersion` can be accessed as a 32-bit value.
-#[cfg(feature = "nightly")]
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub union NumVersionVariant {
-    pub parts: NumVersion,
-    pub whole: UInt32,
+    parts: NumVersion,
+    whole: UInt32,
 }
 
-#[cfg(feature = "nightly")]
 impl Default for NumVersionVariant {
     #[inline]
     fn default() -> Self {
@@ -566,7 +558,6 @@ impl Default for NumVersionVariant {
     }
 }
 
-#[cfg(feature = "nightly")]
 impl fmt::Debug for NumVersionVariant {
     #[inline]
     fn fmt(&self, fmtr: &mut fmt::Formatter) -> fmt::Result {
@@ -577,7 +568,6 @@ impl fmt::Debug for NumVersionVariant {
     }
 }
 
-#[cfg(feature = "nightly")]
 impl PartialEq for NumVersionVariant {
     #[inline]
     fn eq(&self, other: &Self) -> bool {
@@ -585,25 +575,14 @@ impl PartialEq for NumVersionVariant {
     }
 }
 
-#[cfg(feature = "nightly")]
 impl Eq for NumVersionVariant {}
 
-#[cfg(feature = "nightly")]
 impl Hash for NumVersionVariant {
     #[inline]
     fn hash<H: Hasher>(&self, state: &mut H) {
-        unsafe {
-            state.write_u32(self.whole);
-        }
+        let whole = unsafe { self.whole };
+        state.write_u32(whole);
     }
-}
-
-/// `NumVersionVariant` is a wrapper so `NumVersion` can be accessed as a 32-bit value.
-#[cfg(not(feature = "nightly"))]
-#[repr(C)]
-#[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
-pub struct NumVersionVariant {
-    pub whole: UInt32,
 }
 
 pub type NumVersionVariantPtr = *mut NumVersionVariant;
@@ -654,17 +633,23 @@ impl fmt::Debug for VersRec {
         fmt.debug_struct("VersRec")
             .field("numericVersion", &self.numericVersion)
             .field("countryCode", &self.countryCode)
-            .field("shortVersion",
-                   &try!(str::from_utf8(&self.shortVersion).map_err(|_| fmt::Error)))
-            .field("reserved",
-                   &try!(str::from_utf8(&self.reserved).map_err(|_| fmt::Error)))
+            .field(
+                "shortVersion",
+                &str::from_utf8(&self.shortVersion).map_err(|_| fmt::Error)?,
+            )
+            .field(
+                "reserved",
+                &str::from_utf8(&self.reserved).map_err(|_| fmt::Error)?,
+            )
             .finish()
     }
 }
 
 impl Hash for VersRec {
     fn hash<H: Hasher>(&self, state: &mut H) {
-        state.write_u32(unsafe { mem::transmute(self.numericVersion) });
+        let variant = NumVersionVariant { parts: self.numericVersion };
+        let whole = unsafe { variant.whole };
+        state.write_u32(whole);
         state.write_i16(self.countryCode);
         state.write(&self.shortVersion);
         state.write(&self.reserved);
@@ -680,12 +665,16 @@ impl PartialEq for VersRec {
 
         unsafe {
             self.numericVersion == other.numericVersion && self.countryCode == other.countryCode &&
-            memcmp(ptr(&self.shortVersion),
-                   ptr(&other.shortVersion),
-                   mem::size_of::<Str255>()) == 0 &&
-            memcmp(ptr(&self.reserved),
-                   ptr(&other.reserved),
-                   mem::size_of::<Str255>()) == 0
+                memcmp(
+                    ptr(&self.shortVersion),
+                    ptr(&other.shortVersion),
+                    mem::size_of::<Str255>(),
+                ) == 0 &&
+                memcmp(
+                    ptr(&self.reserved),
+                    ptr(&other.reserved),
+                    mem::size_of::<Str255>(),
+                ) == 0
         }
     }
 }
