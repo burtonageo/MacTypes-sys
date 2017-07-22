@@ -524,13 +524,13 @@ pub struct NumVersion {
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct NumVersion {
-    /// 1st part of version number in BCD.
-    pub nonRelRev: UInt8,
-    /// 2nd & 3rd part of version number share a byte.
-    pub stage: UInt8,
-    /// stage code: dev, alpha, beta, final.
-    pub minorAndBugRef: UInt8,
     /// revision level of non-released version.
+    pub nonRelRev: UInt8,
+    /// stage code: dev, alpha, beta, final.
+    pub stage: UInt8,
+    /// 2nd & 3rd part of version number share a byte.
+    pub minorAndBugRef: UInt8,
+    /// 1st part of version number in BCD.
     pub majorRev: UInt8,
 }
 
