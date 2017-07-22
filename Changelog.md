@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [2.0.2] - 2017-07-22
 ### Fixed
 - Improve docs.
 
@@ -57,8 +57,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.4] - 2016-10-19
 ### Changed
-- Made kVariableLengthArray a variable of type ItemCount, and kUnknownType
-  an OSType.
+- Made `kVariableLengthArray` a variable of type `ItemCount`, and `kUnknownType`
+  an `OSType`.
 - Shortened the various `developStage` variables to `UInt8`, from `UInt32`.
 
 ### Added
