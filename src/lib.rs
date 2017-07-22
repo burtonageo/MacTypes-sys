@@ -41,7 +41,7 @@
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 #![cfg_attr(not(feature = "use_std"), no_std)]
 
-//! The `MacTypes-sys` library provides bindings to the MacTypes.h header on OSX.
+//! The `MacTypes-sys` library provides bindings to the `MacTypes.h` header on MacOS.
 //! This library defines base types used in both Carbon and legacy Cocoa APIs.
 
 extern crate libc;
@@ -192,9 +192,9 @@ pub type LangCode = SInt16;
 pub type RegionCode = SInt16;
 /// A 32-bit value made by packing four 1 byte characters together.
 pub type FourCharCode = UInt32;
-/// A FourCharCode used in the OS and file system (e.g. creator).
+/// A `FourCharCode` used in the OS and file system (e.g. creator).
 pub type OSType = FourCharCode;
-/// A FourCharCode used to tag resources (e.g. 'DLOG').
+/// A `FourCharCode` used to tag resources (e.g. `DLOG`).
 pub type ResType = FourCharCode;
 /// A pointer to an `OSType`.
 pub type OSTypePtr = *mut OSType;
@@ -294,7 +294,9 @@ pub const kInvalidId: u32 = 0;
 /// `kVariableLengthArray` is used in array bounds to specify a variable length array.
 /// It is ususally used in variable length structs when the last field is an array
 /// of any size.  Before ANSI C, we used zero as the bounds of variable length
-/// array, but zero length array are illegal in ANSI C.  Example usage:
+/// array, but zero length array are illegal in ANSI C.
+///
+/// ## Example usage:
 ///
 /// ```
 /// struct FooList
@@ -364,10 +366,10 @@ pub type Str27 = [c_uchar; 28];
 /// Pascal string holding up to 15 bytes
 pub type Str15 = [c_uchar; 16];
 
-/// The type Str32 is used in many AppleTalk based data structures.
+/// The type `Str32` is used in many AppleTalk based data structures.
 /// It holds up to 32 one byte chars.  The problem is that with the
 /// length byte it is 33 bytes long.  This can cause weird alignment
-/// problems in structures.  To fix this the type "Str32Field" has
+/// problems in structures.  To fix this the type `Str32Field` has
 /// been created.  It should only be used to hold 32 chars, but
 /// it is 34 bytes long so that there are no alignment problems.
 pub type Str32Field = [c_uchar; 34];
@@ -450,7 +452,7 @@ pub struct FixedRect {
 
 pub type FixedRectPtr = *mut FixedRect;
 
-/// Char when used as a parameter (historical 68K convention).
+/// `Char` when used as a parameter (historical 68K convention).
 pub type CharParameter = c_short;
 
 pub const normal: Style = 0;
@@ -466,13 +468,13 @@ pub const extend: Style = 0x40;
 ///
 /// # Note
 ///
-/// The original Macintosh toolbox in 68K Pascal defined Style as a SET.
-/// Both Style and CHAR occupy 8-bits in packed records or 16-bits when
+/// The original Macintosh toolbox in 68K Pascal defined `Style` as a SET.
+/// Both `Style` and `CHAR` occupy 8-bits in packed records or 16-bits when
 /// used as fields in non-packed records or as parameters.
 pub type Style = c_uchar;
-/// Style when used as a parameter (historical 68K convention).
+/// `Style` when used as a parameter (historical 68K convention).
 pub type StyleParameter = c_short;
-/// Style when used as a field (historical 68K convention).
+/// `Style` when used as a field (historical 68K convention).
 pub type StyleField = Style;
 
 /// Count of units.
