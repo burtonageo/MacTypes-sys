@@ -547,8 +547,8 @@ pub const finalStage: UInt8 = 0x80;
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub union NumVersionVariant {
-    parts: NumVersion,
-    whole: UInt32,
+    pub parts: NumVersion,
+    pub whole: UInt32,
 }
 
 impl Default for NumVersionVariant {
