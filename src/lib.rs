@@ -647,9 +647,7 @@ impl fmt::Debug for VersRec {
 
 impl Hash for VersRec {
     fn hash<H: Hasher>(&self, state: &mut H) {
-        let variant = NumVersionVariant { parts: self.numericVersion };
-        let whole = unsafe { variant.whole };
-        state.write_u32(whole);
+        self.numericVersion.hash(state);
         state.write_i16(self.countryCode);
         state.write(&self.shortVersion);
         state.write(&self.reserved);
