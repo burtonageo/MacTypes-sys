@@ -75,7 +75,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Use rust-native fixed sized int types instead of libc's stdint types.
 
 ### Fixed
-
 - Bugfix: Mark Float80 and Float96 as #[repr(C)]
 
 ## [1.0.1] - 2016-09-08
