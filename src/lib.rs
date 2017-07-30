@@ -298,7 +298,7 @@ pub const kInvalidId: u32 = 0;
 ///
 /// ## Example usage:
 ///
-/// ```
+/// ```C,no_run
 /// struct FooList
 /// {
 ///     short   listLength;
