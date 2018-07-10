@@ -2,7 +2,7 @@
 
 ## Description:
 
- The `MacTypes-sys` library provides bindings to the MacTypes.h header on OSX.
+ The `MacTypes-sys` library provides bindings to the MacTypes.h header on macOS.
 This library defines base types used in both Carbon and legacy Cocoa APIs.
 
 ## Usage:
