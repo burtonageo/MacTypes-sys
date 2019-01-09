@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0] - 2019-01-09
+### Fixed
+- Improved docs.
+- Fixed a documentation test failure caused by fencing C code without marking it.
+
+### Added
+- Added impls of `PartialEq<UInt32>` and `PartialEq<NumVersion>` for `NumVersionVariant`.
+
 ## [2.0.2] - 2017-07-22
 ### Fixed
 - Improve docs.
