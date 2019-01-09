@@ -577,6 +577,20 @@ impl PartialEq for NumVersionVariant {
     }
 }
 
+impl PartialEq<NumVersion> for NumVersionVariant {
+    #[inline]
+    fn eq(&self, other: &NumVersion) -> bool {
+        unsafe { self.parts.eq(&other) }
+    }
+}
+
+impl PartialEq<UInt32> for NumVersionVariant {
+    #[inline]
+    fn eq(&self, other: &UInt32) -> bool {
+        unsafe { self.whole.eq(&other) }
+    }
+}
+
 impl Eq for NumVersionVariant {}
 
 impl Hash for NumVersionVariant {
