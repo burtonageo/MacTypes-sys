@@ -209,7 +209,7 @@ pub type ProcPtr = unsafe extern "C" fn(_: c_long);
 /// Pointer to a 68K function that expects parameters in registers.
 pub type Register68kProcPtr = unsafe extern "C" fn();
 
-/// Pointer to classic 68K code or a `RoutineDescriptor.
+/// Pointer to classic 68K code or a `RoutineDescriptor`.
 pub type UniversalProcPtr = ProcPtr;
 
 /// Pointer to a `ProcPtr`.
@@ -318,7 +318,7 @@ pub type UnicodeScalarValue = UInt32;
 /// range `0xD800`-`0xDFFF` and certain disallowed values).
 pub type UTF32Char = UInt32;
 /// A 16-bit Unicode code value in the default UTF-16 format.
-/// UnicodeScalarValues 0-0xFFFF are expressed in UTF-16
+/// UnicodeScalarValues `0`-`0xFFFF` are expressed in UTF-16
 /// format using a single `UTF16Char` with the same value.
 /// UnicodeScalarValues `0x10000`-`0x10FFFF` are expressed in
 /// UTF-16 format using a pair of `UTF16Char`s - one in the
@@ -386,7 +386,7 @@ pub type StrFileName = Str63;
 
 /// Pointer to a pascal string.
 pub type StringPtr = *mut c_uchar;
-/// Pointer to a StringPtr.
+/// Pointer to a `StringPtr`.
 pub type StringHandle = *mut StringPtr;
 /// Pointer to a read-only pascal string.
 pub type ConstStringPtr = *const c_uchar;
@@ -506,7 +506,7 @@ pub struct TimeRecord {
     pub base: TimeBase,
 }
 
-/// Packed BCD version representation (e.g. "4.2.1a3" is 0x04214003).
+/// Packed BCD version representation (e.g. "4.2.1a3" is `0x04214003`).
 #[cfg(target_endian = "big")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
@@ -521,7 +521,7 @@ pub struct NumVersion {
     pub nonRelRev: UInt8,
 }
 
-/// Packed BCD version representation (e.g. "4.2.1a3" is 0x04214003).
+/// Packed BCD version representation (e.g. "4.2.1a3" is `0x04214003`).
 #[cfg(target_endian = "little")]
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
@@ -577,6 +577,20 @@ impl PartialEq for NumVersionVariant {
     }
 }
 
+impl PartialEq<NumVersion> for NumVersionVariant {
+    #[inline]
+    fn eq(&self, other: &NumVersion) -> bool {
+        unsafe { self.parts.eq(&other) }
+    }
+}
+
+impl PartialEq<UInt32> for NumVersionVariant {
+    #[inline]
+    fn eq(&self, other: &UInt32) -> bool {
+        unsafe { self.whole.eq(&other) }
+    }
+}
+
 impl Eq for NumVersionVariant {}
 
 impl Hash for NumVersionVariant {
@@ -599,7 +613,7 @@ pub struct VersRec {
     pub reserved: Str255,
 }
 
-// Manual implementation of various traits on VersRec as the Str255 members prevent auto-derive
+// Manual implementation of various traits on `VersRec` as the `Str255` members prevent auto-derive
 
 impl Clone for VersRec {
     fn clone(&self) -> Self {
