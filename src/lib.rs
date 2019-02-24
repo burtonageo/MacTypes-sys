@@ -205,7 +205,7 @@ pub type ResTypePtr = *mut ResType;
 pub type Boolean = c_uchar;
 
 /// Generic pointer to a function.
-pub type ProcPtr = unsafe extern "C" fn(c_long);
+pub type ProcPtr = unsafe extern "C" fn(_: c_long);
 /// Pointer to a 68K function that expects parameters in registers.
 pub type Register68kProcPtr = unsafe extern "C" fn();
 
